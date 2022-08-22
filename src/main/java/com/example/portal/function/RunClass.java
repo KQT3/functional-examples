@@ -35,6 +35,9 @@ public class RunClass {
         System.out.println(apply1);
 
         BiFunction<Float, Float, Float> apply2 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide());
+
+        Float apply4 = MyMath.Alternative.alternativeDivide().apply(10f, 2f);
+        System.out.println(apply4);
     }
 
 }

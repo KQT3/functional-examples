@@ -1,7 +1,9 @@
 package com.example.portal.function;
 
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public interface MyMath {
     static int add(Integer x, Integer y) {
@@ -43,7 +45,26 @@ public interface MyMath {
         };
     }
 
-    BiFunction<Float, Float, Float> divideSafe = secondArgIsNotZeroCheck().apply(MyMath.divide());
+    BiFunction<Float, Float, Float> divideSafe = secondArgIsNotZeroCheck().apply(divide());
 
+    /*-----------------------------------------------------------------------------------------------------------------*/
+    interface Alternative {
+        static BinaryOperator<Float> alternativeDivide() {
+            return (x, y) -> x / y;
+        }
 
+        static UnaryOperator<BinaryOperator<Float>> alternativeSecondArgIsNotZeroCheck() {
+            return func -> (x, y) -> {
+                if (y == 0f) {
+                    System.out.println("ERROR");
+                    return 0f;
+                }
+                return func.apply(x, y);
+            };
+        }
+
+        BinaryOperator<Float> alternativeDivideSafe =
+                MyMath.Alternative.alternativeSecondArgIsNotZeroCheck().apply(MyMath.Alternative.alternativeDivide());
+    }
+    /*-----------------------------------------------------------------------------------------------------------------*/
 }
