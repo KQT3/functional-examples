@@ -29,6 +29,10 @@ public class RunClass {
         System.out.println(timesThree.apply(6));
         System.out.println(timesFour.apply(6));
         System.out.println(times2x.apply(5, "2xString"));
+        System.out.println(MyMath.divideSafe.apply(10f, 1f));
+
+        Float apply1 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide()).apply(1f,4f);
+        System.out.println(apply1);
     }
 
 }

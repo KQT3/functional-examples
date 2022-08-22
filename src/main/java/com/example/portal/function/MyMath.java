@@ -17,7 +17,7 @@ public interface MyMath {
     }
 
     static Function<Integer, Double> createMultiplier(Integer y) {
-        return (Integer x) -> Double.valueOf(x * y);
+        return x -> Double.valueOf(x * y);
     }
 
     static BiFunction<Integer, String, Double> createMultiplier2x(Integer y) {
@@ -28,5 +28,22 @@ public interface MyMath {
             return Double.valueOf(number * y);
         };
     }
+
+    static BiFunction<Float, Float, Float> divide() {
+        return (x, y) -> x / y;
+    }
+
+    static Function<BiFunction<Float, Float, Float>, BiFunction<Float, Float, Float>> secondArgIsNotZeroCheck() {
+        return func -> (x, y) -> {
+            if (y == 0f) {
+                System.out.println("ERROR");
+                return 0f;
+            }
+            return func.apply(x, y);
+        };
+    }
+
+    BiFunction<Float, Float, Float> divideSafe = secondArgIsNotZeroCheck().apply(divide());
+
 
 }
