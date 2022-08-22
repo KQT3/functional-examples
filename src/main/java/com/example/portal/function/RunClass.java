@@ -24,7 +24,7 @@ public class RunClass {
         Function<Integer, Double> timesThree = MyMath.createMultiplier(3);
         Function<Integer, Double> timesFour = MyMath.createMultiplier(4);
         BiFunction<Integer, String, Double> times2x = MyMath.createMultiplier2x(10);
-
+        Double apply3 = timesTwo.apply(6);
         System.out.println(timesTwo.apply(6));
         System.out.println(timesThree.apply(6));
         System.out.println(timesFour.apply(6));
@@ -33,6 +33,8 @@ public class RunClass {
 
         Float apply1 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide()).apply(1f,4f);
         System.out.println(apply1);
+
+        BiFunction<Float, Float, Float> apply2 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide());
     }
 
 }

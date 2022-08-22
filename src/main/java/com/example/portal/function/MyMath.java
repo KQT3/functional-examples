@@ -43,7 +43,7 @@ public interface MyMath {
         };
     }
 
-    BiFunction<Float, Float, Float> divideSafe = secondArgIsNotZeroCheck().apply(divide());
+    BiFunction<Float, Float, Float> divideSafe = secondArgIsNotZeroCheck().apply(MyMath.divide());
 
 
 }
