@@ -1,5 +1,6 @@
 package com.example.portal.master;
 
+import com.example.portal.function.TestClass;
 import lombok.Setter;
 
 public class Run implements Runnable{

@@ -2,16 +2,10 @@ package com.example.portal;
 
 import com.example.portal.core.Identifier;
 import com.example.portal.core.Version;
-import com.example.portal.master.Person;
 import com.example.portal.master.Student;
-import com.example.portal.master.TestClass;
 import lombok.Setter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 class FunctionalExampleApplicationTests {
     @Setter

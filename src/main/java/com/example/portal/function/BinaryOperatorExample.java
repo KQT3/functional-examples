@@ -1,9 +1,13 @@
-package com.example.portal.master;
+package com.example.portal.function;
+
+import com.example.portal.master.Student;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class BinaryOperatorExample {
     public static void main(String[] args) {
@@ -21,7 +25,6 @@ public class BinaryOperatorExample {
         Student studentWithLowestAge = find(list, BinaryOperator.minBy(Comparator.comparing(Student::age)));
         System.out.println(studentWithLowestAge);
     }
-
 
     public static Student find(List<Student> list, BinaryOperator<Student> accumulator) {
         return list.stream().reduce(accumulator).orElseThrow();
