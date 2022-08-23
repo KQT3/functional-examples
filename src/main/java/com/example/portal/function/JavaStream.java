@@ -40,6 +40,11 @@ public class JavaStream {
                 .collect(Collectors.toList());
         Collections.reverse(stringStream);
         System.out.println(stringStream);
+
+        Function<Integer, Integer> timeTwo = x -> x * 2;
+        Function<Integer, Integer> minusOne = x -> x - 1;
+        Function<Integer, Integer> timesTwoMinusOne = timeTwo.andThen(minusOne);
+        System.out.println(timesTwoMinusOne.apply(10));
     }
 
 

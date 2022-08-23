@@ -31,6 +31,7 @@ public class MainFunction {
         System.out.println(times2x.apply(5, "2xString"));
         System.out.println(MyMath.divideSafe.apply(10f, 1f));
 
+        /*--------------------------------------------------------------------------------------------------------------*/
         Float apply1 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide()).apply(1f, 4f);
         System.out.println(apply1);
 
@@ -38,6 +39,8 @@ public class MainFunction {
 
         Float apply4 = MyMath.Alternative.alternativeDivide().apply(10f, 2f);
         System.out.println(apply4);
+
+        /*--------------------------------------------------------------------------------------------------------------*/
 
         TriFunction<Integer, Integer, Integer, Integer> add = (arg1, arg2, arg3) -> arg1 + arg2 + arg3;
 
@@ -49,12 +52,7 @@ public class MainFunction {
 
         System.out.println(add5n6.apply(10));
 
-        Function<Integer, Integer> timeTwo = x -> x * 2;
-        Function<Integer, Integer> minusOne = x -> x - 1;
-        Function<Integer, Integer> timesTwoMinusOne = timeTwo.andThen(minusOne);
-        System.out.println(timesTwoMinusOne.apply(10));
-
+        /*--------------------------------------------------------------------------------------------------------------*/
 
     }
-
 }
