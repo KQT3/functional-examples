@@ -1,11 +1,11 @@
 package com.example.portal.function;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.function.*;
 
-public class RunClass {
-    public static void main(String[] args) {
+public class MainFunction {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         TriFunction<Integer, Integer, Integer, Integer> triFunction
                 = (integer, integer2, integer3) -> integer + integer2 + integer3;
 
@@ -31,13 +31,30 @@ public class RunClass {
         System.out.println(times2x.apply(5, "2xString"));
         System.out.println(MyMath.divideSafe.apply(10f, 1f));
 
-        Float apply1 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide()).apply(1f,4f);
+        Float apply1 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide()).apply(1f, 4f);
         System.out.println(apply1);
 
         BiFunction<Float, Float, Float> apply2 = MyMath.secondArgIsNotZeroCheck().apply(MyMath.divide());
 
         Float apply4 = MyMath.Alternative.alternativeDivide().apply(10f, 2f);
         System.out.println(apply4);
+
+        TriFunction<Integer, Integer, Integer, Integer> add = (arg1, arg2, arg3) -> arg1 + arg2 + arg3;
+
+        BiFunction<Integer, Integer, Function<Integer, Integer>> addPartial =
+                (integer1, integer2) -> (integer3) -> add.apply(integer1, integer2, integer3);
+
+        //adds first and second integer
+        Function<Integer, Integer> add5n6 = addPartial.apply(5, 6);
+
+        System.out.println(add5n6.apply(10));
+
+        Function<Integer, Integer> timeTwo = x -> x * 2;
+        Function<Integer, Integer> minusOne = x -> x - 1;
+        Function<Integer, Integer> timesTwoMinusOne = timeTwo.andThen(minusOne);
+        System.out.println(timesTwoMinusOne.apply(10));
+
+
     }
 
 }
